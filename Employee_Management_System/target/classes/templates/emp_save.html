@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" xmlns:th="www.thymeleaf.org" th:replace="~{ index :: layout(~{::title} , ~{::section})}">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<title>Empsave</title>
+</head>
+
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="card">
+						<div class="card-header text-center">
+							<p class="fs-4 bg-warning">Add Emp</p>
+							<th:block th:if="${session.msg}">
+								<p class="text-center text-successfs-4">[[${session.msg}]]</p>
+								<th:block th:text="${@empServiceimplement.removeSessionmsg()}"></th:block>
+							</th:block>
+						</div>
+						<div class="card-body">
+							<form action="saveEmp" method="post">
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">Full Name</label>
+									<input type="text" class="form-control" name="name" required>
+								</div>
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">Email address</label>
+									<input type="email" class="form-control" name="email" required>
+								</div>
+								<div class="mb-3">
+									<label for="exampleInputPassword1" class="form-label">Password</label>
+									<input type="password" class="form-control" name="password" required>
+								</div>
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label"> Address</label>
+									<input type="text" class="form-control" name="address">
+								</div>
+
+								<div class="mb-3">
+									<label for="exampleInputPassword1" class="form-label">Gender</label>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="checkbox" name="gender" value="male">
+										<label class="form-check-label" for="inlineCheckbox1">Male</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="checkbox" name="gender" value="female">
+										<label class="form-check-label" for="inlineCheckbox2">Female</label>
+									</div>
+
+								</div>
+
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+</body>
+
+</html>

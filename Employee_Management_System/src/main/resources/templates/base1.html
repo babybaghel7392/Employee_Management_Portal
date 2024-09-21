@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" xmlns:th="www.thymeleaf.org" th:replace="~{ index :: layout(~{::title} , ~{::section})}" >
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Index page</title>
+  </head>
+  <body>
+		<section>
+			<div class="container p-5">
+				<div class="row">
+				<div class="col-8offset-md-2">
+						<div class="card">
+							<div class="card-header text-center fs-4 bg-warning">
+								Employee Details
+								<th:block th:if="${session.msg}">
+										<p class="text-center text-success fs-4">[[${session.msg}]]</p>
+										<th:block th:text="${@empServiceimplement.removeSessionmsg()}"></th:block>
+								</th:block>
+							</div>
+							<div class="card-body">
+								<table class="table table-striped">
+								  <thead>
+								    <tr>
+								      <th scope="col">ID</th>
+								      <th scope="col">Name</th>
+								      <th scope="col">Email</th>
+								      <th scope="col">Address</th>
+									  <th scope="col">Gender</th>
+									  <th scope="col">Actions</th>
+								    </tr>
+								  </thead>
+								  <tbody>
+								    <tr th:each="e,c:${emplist}">
+								      <th scope="row">[[${c.count}]]</th>
+								      <td>[[${e.name}]]</td>
+								      <td>[[${e.email}]]</td>
+								      <td>[[${e.address}]]</td>
+									  <td>[[${e.gender}]]</td>
+									  <td><a  th:href="@{'Edit/'+${e.id}}" class="btn btn-primary">Edit</a>
+										<a th:href="@{'delete/'+${e.id}}" class="btn btn-danger">Delete</a>
+									</td>
+								    </tr>
+								  </tbody>
+								</table>
+							</div>
+						</div>
+				</div>
+				</div>
+				
+			</div>
+		</section>
+  </body>
+  </html>
